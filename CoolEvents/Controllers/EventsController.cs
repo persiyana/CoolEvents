@@ -11,10 +11,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.CodeAnalysis;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
+using Microsoft.Extensions.Logging;
 
 namespace CoolEvents.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    
     public class EventsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -43,15 +44,28 @@ namespace CoolEvents.Controllers
 
             var @event = await _context.Events
                 .FirstOrDefaultAsync(m => m.Id == id);
+            var usersWithEvent = from u in _context.ApplicationUsers
+                                 where u.UserEvents.Any(ue => ue.EventId == @event.Id)
+                                 select u;
+            DetailsEventModel detailsEventModel = new DetailsEventModel
+            {
+                Id = @event.Id,
+                Date = @event.Date,
+                Name = @event.Name,
+                Description = @event.Description,
+                FilePath = @event.FilePath,
+                ApplicationUsers = usersWithEvent.ToList()
+        };
             if (@event == null)
             {
                 return NotFound();
             }
 
-            return View(@event);
+            return View(detailsEventModel);
         }
 
         // GET: Events/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -128,6 +142,7 @@ namespace CoolEvents.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,FilePath,Date")] EditEventModel editEventModel)
         {
             if (id != editEventModel.Id)
@@ -163,6 +178,7 @@ namespace CoolEvents.Controllers
         }
 
         // GET: Events/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Events == null)

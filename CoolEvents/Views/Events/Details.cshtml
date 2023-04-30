@@ -1,4 +1,4 @@
-﻿@model CoolEvents.Models.Event
+﻿@model CoolEvents.Models.DetailsEventModel
 
 @{
     ViewData["Title"] = "Details";
@@ -10,6 +10,12 @@
     <h4>Event</h4>
     <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FilePath)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/Images/Events/@Model.FilePath" />
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -29,15 +35,29 @@
         <dd class = "col-sm-10">
             @string.Format($"{Model.Date.ToString("dd/MM/yyyy")}")
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FilePath)
-        </dt>
-        <dd class="col-sm-10">
-            <img src="~/Images/Events/@Model.FilePath" />
-        </dd>
+        <tr>
+            @Html.DisplayNameFor(model => model.ApplicationUsers)
+            <td class="darker">
+                @if (Model.ApplicationUsers.Count > 0)
+                {
+                    foreach (var item in Model.ApplicationUsers)
+                    {
+                        <p>	 @item.UserName &diams;</p>
+                    }
+                }
+                else
+                {
+                    <i>none</i>
+                }
+            </td>
+        </tr>
+       
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+    }
     <a asp-action="Index">Back to List</a>
 </div>
