@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolEvents", "CoolEvents\CoolEvents.csproj", "{D64CFE4B-0212-41E9-97B5-120432341A08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D64CFE4B-0212-41E9-97B5-120432341A08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D64CFE4B-0212-41E9-97B5-120432341A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D64CFE4B-0212-41E9-97B5-120432341A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D64CFE4B-0212-41E9-97B5-120432341A08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0497E73B-AABF-4711-BF50-A3DAFD1D5A09}
+	EndGlobalSection
+EndGlobal

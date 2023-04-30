@@ -1,0 +1,54 @@
+﻿@model CoolEvents.Models.RegistrationModel;
+@{
+    ViewData["Title"] = "Sign in";
+}
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-secondary text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <div class="mb-md-5 mt-md-4 pb-5">
+
+                            <h2 class="fw-bold mb-2 text-uppercase">Sign up</h2>
+                            <form asp-action="Registration" method="post">
+                                <div class="form-outline form-white mb-4">
+                                    <input type="text" asp-for="FirstName" id="typeEmailX" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typeEmailX">First Name</label>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="text" asp-for="LastName" id="typeEmailX" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typeEmailX">Last Name</label>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="text" asp-for="Username" id="typeEmailX" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typeEmailX">Username</label>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="text" asp-for="Email" id="typeEmailX" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typeEmailX">Email</label>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="Password" type="password" id="typePasswordX" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX">Password (eg. John@123)</label>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="PasswordConfirm" type="password" id="typePasswordX" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX">Password confirm</label>
+                                </div>
+
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign up</button>
+                                <a asp-action="Login" class="text-light">Login</a>
+                            </form>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

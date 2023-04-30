@@ -1,0 +1,49 @@
+﻿@model CoolEvents.Models.AdminIndexModel;
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1>Users settings</h1>
+    <table class="indexTable">
+        <thead>
+            <tr>
+                <th>
+                    Username
+                </th>
+                <th>
+                    Role
+                </th>
+                <th>
+                    Team
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var i in Model.Users)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.UserName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.UserRoles[i])
+                    </td>
+
+                    
+                    <td>
+                        <a asp-action="EditRole" class="indexButton yellow" asp-route-userId="@i.Id">Edit role</a>
+                         </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
