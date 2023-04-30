@@ -26,7 +26,7 @@ namespace CoolEvents.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-       
+
 
         // GET: UserEvents/Create
         public IActionResult Create()
@@ -54,6 +54,6 @@ namespace CoolEvents.Controllers
             return View(userEvent);
         }
 
-        
+
     }
 }
